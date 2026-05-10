@@ -52,12 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return [...new Set(matches)].slice(0, 50); // dedupe + cap at 50
     };
 
-    // Extract tweet ID from URL (e.g., "https://x.com/user/status/1234567890" -> "1234567890")
-    const extractTweetId = (url) => {
-        const match = url.match(/\/status\/(\d+)/);
-        return match ? match[1] : null;
-    };
-
     // --- Smart Paste ---
     // If pasted text has 2+ tweet links, clear inputs and fill them all in
     tweetInputsContainer.addEventListener('paste', (e) => {
@@ -166,17 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
             finalResults.forEach(res => {
                 const row = document.createElement('tr');
                 const isError = res.status === 'error';
-                const tweetId = extractTweetId(res.url || res.id);
-                const postLink = tweetId
-                    ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}&in_reply_to_status_id=${tweetId}`
-                    : `https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}`;
                 row.innerHTML = `
                     <td>${res.url || res.id}</td>
                     <td>${res.reply}</td>
                     <td>
                         ${isError
                             ? '<span style="color:#e55">Error</span>'
-                            : `<a class="post-btn" href="${postLink}" target="_blank" rel="noopener">Post</a>`
+                            : `<a class="post-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}" target="_blank" rel="noopener">Post</a>`
                         }
                     </td>
                 `;
