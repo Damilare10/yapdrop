@@ -92,6 +92,13 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.auto-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
 .counter {
     display: flex;
     align-items: center;
