@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isError = res.status === 'error';
                 const tweetId = extractTweetId(res.url || res.id);
                 const postLink = tweetId
-                    ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}&in_reply_to_status_id=${tweetId}`
+                    ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}&in_reply_to=${tweetId}`
                     : `https://twitter.com/intent/tweet?text=${encodeURIComponent(res.reply)}`;
                 row.innerHTML = `
                     <td>${res.url || res.id}</td>
