@@ -35,7 +35,9 @@ app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 @app.get("/")
 async def root():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
-
+@app.get("/app")
+async def serve_app():
+    return FileResponse(os.path.join(FRONTEND_DIR, "app.html"))
 @app.post("/api/generate-replies")
 async def generate_replies(req: GenerationRequest):
     if not req.tweets:
