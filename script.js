@@ -162,6 +162,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             const finalResults = [...results, ...data.results];
 
+            // Track successful reply generation with Umami
+            if (window.umami) {
+                umami.track('Reply Generated', {
+                    count: finalResults.length,
+                    successful_replies: finalResults.filter(r => r.status !== 'error').length
+                });
+            }
+
             resultsBody.innerHTML = '';
             finalResults.forEach(res => {
                 const row = document.createElement('tr');
