@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="6d46ab6c-1475-4475-8c4b-d8a9c3b5e7a9"></script>
-    <style>
+     <style>
         * {
             margin: 0;
             padding: 0;
@@ -509,20 +508,6 @@
         </div>
     </footer>
 
-    <script>
-        // Track landing page views
-        if (window.umami) {
-            umami.track('Landing Page View');
-        }
-
-        // Track CTA clicks
-        document.querySelectorAll('a[href="/app"]').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.umami) {
-                    umami.track('CTA Click', { source: link.textContent });
-                }
-            });
-        });
-    </script>
+    
 </body>
 </html>
