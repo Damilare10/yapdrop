@@ -94,9 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
     generateBtn.addEventListener('click', async () => {
         const inputs = tweetInputsContainer.querySelectorAll('.tweet-input');
         const urls = Array.from(inputs)
-            .map(input => input.value.trim())
-            .filter(u => u && u !== '...');
-
+        .map(input => {
+            let val = input.value.trim();
+            
+            // 1. Strip off the tracking parameters at the end of the link (like ?s=46)
+            val = val.split('?')[0];
+            
+            // 2. Force https:// at the beginning so Render doesn't throw a 404 error
+            if (val && !val.startsWith('http')) {
+                val = 'https://' + val;
+            }
+            
+            return val;
+        })
+        .filter(u => u && u !== '...');
         if (urls.length === 0) {
             alert('Please enter at least one tweet link.');
             return;
@@ -113,10 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const url of urls) {
                 try {
                     let apiUrl = url;
-                    if (url.includes('x.com')) {
-                        apiUrl = url.replace('x.com', 'api.vxtwitter.com');
-                    } else if (url.includes('twitter.com')) {
-                        apiUrl = url.replace('twitter.com', 'api.vxtwitter.com');
+                    
+                    // 1. Force the URL to have https:// so the browser knows it is an external site
+                    if (!apiUrl.startsWith('http')) {
+                        apiUrl = 'https://' + apiUrl;
+                    }
+
+                    // 2. Do the standard replacements
+                    if (apiUrl.includes('x.com')) {
+                        apiUrl = apiUrl.replace('x.com', 'api.vxtwitter.com');
+                    } else if (apiUrl.includes('twitter.com')) {
+                        apiUrl = apiUrl.replace('twitter.com', 'api.vxtwitter.com');
                     } else {
                         apiUrl = `https://api.vxtwitter.com/status/${url}`;
                     }
