@@ -373,7 +373,7 @@
             Yapdrop
         </div>
         <div>
-            <a href="/" class="cta-button">Start Generating</a>
+            <a href="/app" class="cta-button">Start Generating</a>
         </div>
     </nav>
 
@@ -382,7 +382,7 @@
         <h1>Generate 50 Twitter Replies in Seconds</h1>
         <p>Stop manually writing replies. Yapdrop automatically generates professional, contextual replies to any tweet. Just paste and go.</p>
         <div class="hero-buttons">
-            <a href="/" class="btn-primary">Start Now - It's Free</a>
+            <a href="/app" class="btn-primary">Start Now - It's Free</a>
             <a href="#features" class="btn-secondary">Learn More</a>
         </div>
     </section>
@@ -495,7 +495,7 @@
         <div class="container">
             <h2>Ready to Boost Your Twitter Engagement?</h2>
             <p>Stop spending hours writing replies. Let Yapdrop do it for you.</p>
-            <a href="/" class="btn-primary">Start Generating Replies Now</a>
+            <a href="/app" class="btn-primary">Start Generating Replies Now</a>
         </div>
     </section>
 
@@ -516,7 +516,7 @@
         }
 
         // Track CTA clicks
-        document.querySelectorAll('a[href="/"]').forEach(link => {
+        document.querySelectorAll('a[href="/app"]').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.umami) {
                     umami.track('CTA Click', { source: link.textContent });
