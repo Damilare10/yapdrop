@@ -3,526 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapdrop 💧 - Generate Twitter Replies in Seconds</title>
+    <title>Yapdrop 💧 | Reply Guys</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="6d46ab6c-1475-4475-8c4b-d8a9c3b5e7a9"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-        }
-
-        /* Navigation */
-        nav {
-            background: #fff;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0D4D44;
-        }
-
-        .logo svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        nav a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #0D4D44;
-        }
-
-        .cta-button {
-            background: #0D4D44;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: #0a3a32;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(13, 77, 68, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0D4D44 0%, #0a3a32 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #0D4D44;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 2px solid white;
-            transition: all 0.3s;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            background: #f9fafb;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: #e8f4f2;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #1a1a1a;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: #0D4D44;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0 auto 1.5rem;
-        }
-
-        .step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #1a1a1a;
-        }
-
-        .step p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Stats Section */
-        .stats {
-            background: #0D4D44;
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            padding: 2rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #0D4D44 0%, #0a3a32 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links {
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            color: #0D4D44;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="#0D4D44"/>
-            </svg>
-            Yapdrop
-        </div>
-        <div>
-            <a href="#generator" class="cta-button">Start Generating</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Generate 50 Twitter Replies in Seconds</h1>
-        <p>Stop manually writing replies. Yapdrop automatically generates professional, contextual replies to any tweet. Just paste and go.</p>
-        <div class="hero-buttons">
-            <a href="#generator" class="btn-primary">Start Now - It's Free</a>
-            <a href="#features" class="btn-secondary">Learn More</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Header -->
+    <header>
         <div class="container">
-            <h2 class="section-title">Why Choose Yapdrop?</h2>
-            <p class="section-subtitle">Fast, easy, and powerful reply generation</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Generate up to 50 professional replies instantly. No waiting, no delays. Get results in seconds.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Smart & Contextual</h3>
-                    <p>Our AI understands tweet context and generates replies that match the tone and topic perfectly.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Professional Quality</h3>
-                    <p>Every reply is polished, contextual, and ready to post. No awkward or generic responses.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🧹</div>
-                    <h3>Auto-Cleaning</h3>
-                    <p>Paste anything - links, text, multiple tweets. Yapdrop automatically extracts and cleans the data.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Super Simple</h3>
-                    <p>One input box. Paste your content. Click generate. That's it. No complex setup or learning curve.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Bulk Generation</h3>
-                    <p>Generate replies for multiple tweets at once. Up to 50 replies in a single batch.</p>
-                </div>
+            <div class="logo">
+                <a href="landing.html" style="text-decoration: none; color: #0D4D44; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="#0D4D44"/>
+                    </svg>
+                    <span>Yapdrop</span>
+                </a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Three simple steps to generate amazing replies</p>
-            
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Paste Your Content</h3>
-                    <p>Paste tweet links, text, or multiple tweets into the input box. Yapdrop handles all the messy extraction.</p>
-                </div>
+    <!-- Main Content -->
+    <main class="container">
+        <section class="tool-section">
+            <h1 class="title">Reply Guys</h1>
+            <p class="subtitle">You can generate up to 50 replies at a go</p>
 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Generate Replies</h3>
-                    <p>Click "Generate Reply" and watch as Yapdrop creates professional, contextual replies instantly.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Post to Twitter</h3>
-                    <p>Review your replies and post directly to Twitter with one click. Your engagement just skyrocketed.</p>
+            <div class="controls">
+                <div class="counter-label">Number of Tweets *</div>
+                <div class="counter">
+                    <button id="decrement" class="counter-btn" aria-label="Decrease counter">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/>
+                        </svg>
+                    </button>
+                    <span id="tweet-count">1</span>
+                    <button id="increment" class="counter-btn" aria-label="Increase counter">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">By The Numbers</h2>
-            
-            <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-number">50</div>
-                    <div class="stat-label">Replies at Once</div>
-                </div>
+            <div class="auto-label">auto</div>
 
-                <div class="stat">
-                    <div class="stat-number">&lt;1s</div>
-                    <div class="stat-label">Generation Time</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Automatic Cleaning</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Free to Use</div>
+            <div id="tweet-inputs" class="tweet-inputs">
+                <!-- Inputs will be dynamically generated here -->
+                <div class="input-group">
+                    <div class="input-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <input type="text" placeholder="Tweet link 1..." class="tweet-input">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Boost Your Twitter Engagement?</h2>
-            <p>Stop spending hours writing replies. Let Yapdrop do it for you.</p>
-            <a href="#generator" class="btn-primary">Start Generating Replies Now</a>
-        </div>
-    </section>
+            <button id="generate-btn" class="primary-btn">Generate Reply</button>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Yapdrop. Generate Twitter replies like a pro.</p>
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="https://github.com/Damilare10/yapdrop" target="_blank">GitHub</a>
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-        </div>
-    </footer>
+        <!-- Table Section -->
+        <section class="table-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tweet Links</th>
+                            <th>Replies</th>
+                            <th>Post</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
-    <script>
-        // Track landing page views
-        if (window.umami) {
-            umami.track('Landing Page View');
-        }
-
-        // Track CTA clicks
-        document.querySelectorAll('a[href="#generator"]').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.umami) {
-                    umami.track('CTA Click', { source: link.textContent });
-                }
-            });
-        });
-    </script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
